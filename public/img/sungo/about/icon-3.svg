@@ -1,0 +1,15 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Acclimatized Nurseries: Sprouting Seedling + Propagation Nursery Pot / Sun -->
+  <!-- Nursery Planter Pot Base -->
+  <path d="M10 23L12 32H24L26 23H10Z" fill="#1D8F2C" fill-opacity="0.12" stroke="#1D8F2C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 23H28" stroke="#1D8F2C" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Central Sprout Stem -->
+  <path d="M18 23V12" stroke="#1D8F2C" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Left Acclimatized Leaf -->
+  <path d="M18 16C13 16 11 11 11 11C11 11 16 9 18 13" fill="#1D8F2C" fill-opacity="0.2" stroke="#1D8F2C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right Acclimatized Leaf -->
+  <path d="M18 13C20 9 25 11 25 11C25 11 23 16 18 16" fill="#1D8F2C" fill-opacity="0.2" stroke="#1D8F2C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Growth / Vitality Sparkle Dot -->
+  <circle cx="18" cy="6" r="2" fill="#1D8F2C"/>
+  <path d="M18 2V4" stroke="#1D8F2C" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

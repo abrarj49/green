@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Al Qussie International Mark -->
+  <g transform="translate(8, 10)">
+    <circle cx="22" cy="22" r="20" fill="#0C2340" />
+    <circle cx="22" cy="22" r="16" stroke="#D4AF37" stroke-width="2" fill="none" />
+    <text x="22" y="29" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="20" fill="#D4AF37" text-anchor="middle">Q</text>
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="58" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="13" fill="#0C2340">شركة القسي العالمية</text>
+    <text x="58" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="9.5" letter-spacing="1.2" fill="#8C7355">AL QUSSIE INTERNATIONAL</text>
+  </g>
+</svg>

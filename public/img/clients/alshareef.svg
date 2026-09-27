@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
+  <!-- Alshareef Group Mark -->
+  <g transform="translate(8, 10)">
+    <rect x="2" y="2" width="40" height="40" rx="10" fill="#0F172A" />
+    <path d="M22 10l12 12-12 12-12-12z" stroke="#C9A34E" stroke-width="2.5" fill="none" />
+    <circle cx="22" cy="22" r="4" fill="#C9A34E" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="64" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="14" fill="#0F172A">مجموعة عبدالرحمن الشريف</text>
+    <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="9.5" letter-spacing="1.5" fill="#C9A34E">ALSHAREEF GROUP</text>
+  </g>
+</svg>

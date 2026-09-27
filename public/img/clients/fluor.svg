@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Fluor Wordmark -->
+  <g transform="translate(6, 12)">
+    <!-- Red Accent Parallelogram -->
+    <polygon points="128,6 140,6 134,30 122,30" fill="#DA291C" />
+
+    <!-- FLUOR Lettering -->
+    <text x="0" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="32" letter-spacing="2" fill="#003865">FLUOR</text>
+    <text x="148" y="28" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="14" fill="#003865">العربية</text>
+    <text x="2" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="8.5" letter-spacing="2" fill="#64748B">FLUOR ARABIA</text>
+  </g>
+</svg>

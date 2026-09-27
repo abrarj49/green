@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
+  <!-- King Abdullah Sports City Jewel Icon -->
+  <g transform="translate(8, 8)">
+    <!-- Hexagonal / Diamond Facets -->
+    <path d="M24 4L42 14v20L24 44 6 34V14L24 4z" fill="#142B28" stroke="#10B981" stroke-width="1.5" />
+    <path d="M24 4v40M6 14l36 20M42 14L6 34" stroke="#10B981" stroke-width="0.8" stroke-opacity="0.6" />
+    <circle cx="24" cy="24" r="7" fill="#047857" stroke="#34D399" stroke-width="1.2" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="64" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="13.5" fill="#142B28">مدينة الملك عبدالله الرياضية</text>
+    <text x="64" y="43" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="9" letter-spacing="1.2" fill="#059669">KING ABDULLAH SPORTS CITY</text>
+  </g>
+</svg>

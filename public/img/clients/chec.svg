@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- CHEC Symbol -->
+  <g transform="translate(8, 10)">
+    <circle cx="22" cy="22" r="20" stroke="#004B87" stroke-width="3" fill="none" />
+    <path d="M4 22c8-7 28-7 36 0" stroke="#008CD2" stroke-width="2.5" />
+    <path d="M4 22c8 7 28 7 36 0" stroke="#008CD2" stroke-width="2.5" />
+    <path d="M22 2v40" stroke="#004B87" stroke-width="2" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="60" y="31" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="22" letter-spacing="2" fill="#004B87">CHEC</text>
+    <text x="60" y="47" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="8.5" letter-spacing="0.5" fill="#475569">CHINA HARBOUR ENGINEERING</text>
+  </g>
+</svg>

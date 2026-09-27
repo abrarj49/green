@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 64" fill="none">
+  <!-- Bank AlJazira Spiral Nautilus Emblem -->
+  <g transform="translate(6, 10)">
+    <!-- Outer Blue Arc -->
+    <path d="M22 4C10 4 2 13 2 23c0 11 9 20 21 20 9 0 17-6 19-15-2 7-8 11-15 11-9 0-16-7-16-15 0-8 6-15 14-15 5 0 9 3 11 7-1-4-5-7-9-7z" fill="#003B71" />
+    <!-- Inner Cyan Arc -->
+    <path d="M22 10c-7 0-12 5-12 12 0 7 5 12 12 12 5 0 10-3 11-8-1 4-5 6-9 6-5 0-9-4-9-9 0-5 4-9 9-9 3 0 6 2 7 4-1-4-4-7-8-7z" fill="#00A3E0" />
+    <circle cx="22" cy="22" r="3.5" fill="#003B71" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="60" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="800" font-size="16" fill="#003B71">بنك الجزيرة</text>
+    <text x="60" y="43" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" letter-spacing="1.5" fill="#00A3E0">BANK ALJAZIRA</text>
+  </g>
+</svg>

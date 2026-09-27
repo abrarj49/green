@@ -1,0 +1,452 @@
+{
+  "metadata": {
+    "home": {
+      "title": "Green Solution KSA | Landscape Design & Environmental Services",
+      "description": "Green Solution KSA delivers premium landscape design, irrigation, hardscape and environmental services across Saudi Arabia. 25+ years of horticultural expertise, 55+ completed projects."
+    },
+    "about": {
+      "title": "About Us | Green Solution KSA",
+      "description": "Learn about Green Solution Co. — 25+ years of international horticultural experience, delivering sustainable landscape solutions across Saudi Arabia."
+    },
+    "services": {
+      "title": "Our Services | Green Solution KSA",
+      "description": "Comprehensive landscaping, irrigation, hardscape, pest control, and maintenance services for residential, commercial, and public spaces across Saudi Arabia."
+    },
+    "projects": {
+      "title": "Our Projects | Green Solution KSA",
+      "description": "Explore 55+ completed landscaping and irrigation projects across Saudi Arabia, from King Abdullah Sports City to private palaces."
+    },
+    "clients": {
+      "title": "Our Clients | Green Solution KSA",
+      "description": "Trusted by leading Saudi organizations including King Abdulaziz University, Jeddah Chamber of Commerce, Saudi Arabian Airlines, and more."
+    },
+    "contact": {
+      "title": "Contact Us | Green Solution KSA",
+      "description": "Get in touch with Green Solution Co. for landscape design, irrigation systems, and maintenance services across Saudi Arabia."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "clients": "Clients",
+    "blog": "Blog",
+    "contact": "Contact",
+    "requestQuote": "Request a Quote",
+    "switchLang": "العربية"
+  },
+  "hero": {
+    "headline": "Transforming Saudi Landscapes Into Green Legacies",
+    "subheadline": "Landscaping, Maintenance & Irrigation Systems",
+    "cta": "Request a Free Quote",
+    "scrollHint": "Scroll to explore",
+    "watchVideo": "Watch Showreel",
+    "videoDuration": "2 Min HD",
+    "modalTitle": "Green Solution KSA — Corporate Showcase",
+    "visionBadge": "Saudi Green Initiative Partner • 25+ Years Experience",
+    "exploreServices": "Explore 13 Services",
+    "pillarsTitle": "Key Specializations",
+    "waterSaved": "30% Water Saved",
+    "waterSavedDesc": "IoT automated irrigation telemetry",
+    "projectsCompleted": "55+ Landmark Projects",
+    "projectsCompletedDesc": "Royal palaces, stadiums & campuses",
+    "yearsExpertise": "25+ Years Experience",
+    "yearsExpertiseDesc": "Proven international agronomists"
+  },
+  "stats": {
+    "years": "Years Experience",
+    "yearsValue": "25+",
+    "projects": "Completed Projects",
+    "projectsValue": "55+",
+    "clients": "Trusted Clients",
+    "clientsValue": "19+",
+    "services": "Service Lines",
+    "servicesValue": "13"
+  },
+  "preloader": {
+    "captions": [
+      "Rooting the design…",
+      "Planting the vision…",
+      "Growing the layout…",
+      "Nurturing the pixels…",
+      "Blooming into view…"
+    ]
+  },
+  "aboutPreview": {
+    "eyebrow": "About Green Solution",
+    "title": "Cultivating Excellence Across Saudi Arabia",
+    "description": "Founded by a professionally qualified horticulture team with 25+ years of international experience, Green Solution Co. brings creativity and environmental respect to every project — from residential gardens and corporate landscapes to large public developments across the Kingdom.",
+    "cta": "Learn More About Us"
+  },
+  "about": {
+    "welcomeTitle": "Welcome to Green Solution",
+    "welcomeText": "Green Solution Co. was founded by a professionally qualified horticulture team with 25+ years of international experience, now focused exclusively on Saudi Arabia. We approach residential gardens, corporate landscapes, and large public developments with creativity and deep respect for the local environment.",
+    "aboutTitle": "What We Do",
+    "aboutPoints": [
+      "Master Urban Landscape and Forestation Planning",
+      "EPA-compliant Environmental Studies & Feasibility Assessments",
+      "Design and execution of community parks, residential compounds, commercial developments, and recreational zones",
+      "Full pipeline: conceptual master plans → construction drawings → MEP layouts → irrigation schematics → Bills of Quantities (BoQs)",
+      "Aligned with Saudi Vision 2030",
+      "Team of horticulturists, landscape architects, environmental specialists, engineers, and technicians",
+      "In-house plant nursery for consistent plant-stock quality"
+    ],
+    "visionTitle": "Our Vision",
+    "visionText": "To become Saudi Arabia's most trusted and innovative name in landscape excellence — delivering sustainable, artistic, and customized outdoor solutions that transform every space into a green legacy reflecting beauty, balance, and environmental responsibility in line with the Kingdom's vision for a sustainable future.",
+    "missionTitle": "Our Mission",
+    "missionText": "To design, develop, and maintain aesthetically inspiring, functional, and sustainable landscapes across Saudi Arabia — enhancing quality of life and promoting environmental harmony. Through innovation, horticultural expertise, and ethical service, we strive to exceed client expectations while nurturing lasting beauty and sustainability in every outdoor space we create.",
+    "trustTitle": "Certifications & Compliance",
+    "trustBadges": [
+      "Commercial Registration (CR) — Active",
+      "VAT Registration Certificate",
+      "GOSI (Social Insurance) Registration",
+      "Nationalization Certificate — Green Nitaqat Band, 100% Saudization",
+      "Jeddah Chamber of Commerce Membership"
+    ]
+  },
+  "servicesPreview": {
+    "eyebrow": "What We Offer",
+    "title": "Comprehensive Landscape Solutions",
+    "cta": "View All Services"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "From concept to completion, we deliver end-to-end landscape solutions tailored to Saudi Arabia's unique environment.",
+    "items": {
+      "landscape-design-planning": {
+        "title": "Landscape Design & Planning",
+        "shortDesc": "Conceptual layouts, working drawings, and master plans for residential, commercial, and public park projects.",
+        "fullDesc": "Our landscape design and planning services encompass the full creative pipeline — from initial conceptual layouts and site analysis to detailed working drawings and comprehensive master plans. We serve residential developments, commercial properties, and public parks with designs that balance aesthetic beauty with environmental sustainability. Our team of landscape architects works closely with clients to create spaces that reflect their vision while respecting the local Saudi climate and ecology.",
+        "features": ["Conceptual Master Plans", "Working Drawings", "Site Analysis", "Residential Design", "Commercial Landscapes", "Public Parks"]
+      },
+      "outdoor-paving-hardscape": {
+        "title": "Outdoor Paving & Hardscape Solutions",
+        "shortDesc": "Driveways, walkways, patios, and courtyards using natural stone, concrete pavers, and decorative edging.",
+        "fullDesc": "Transform your outdoor spaces with our premium hardscape solutions. We specialize in designing and installing durable, aesthetically striking driveways, walkways, patios, and courtyards. Using the finest natural stone, precision-cut concrete pavers, and decorative edging, we create outdoor surfaces that withstand Saudi Arabia's demanding climate while enhancing the beauty and functionality of every property.",
+        "features": ["Natural Stone", "Concrete Pavers", "Decorative Edging", "Driveways", "Walkways", "Courtyards"]
+      },
+      "urban-green-space-management": {
+        "title": "Urban Green Space Management",
+        "shortDesc": "Public parks, green belts, community gardens, and roadside plantations with smart, eco-friendly maintenance.",
+        "fullDesc": "We manage and maintain urban green spaces that serve communities across Saudi Arabia. From public parks and green belts to community gardens and roadside plantations, our smart, eco-friendly maintenance programs ensure these vital spaces remain vibrant, healthy, and welcoming. Our approach integrates modern sustainable practices with deep horticultural knowledge to create green spaces that enhance urban quality of life.",
+        "features": ["Public Parks", "Green Belts", "Community Gardens", "Roadside Plantations", "Smart Maintenance", "Eco-friendly Practices"]
+      },
+      "vertical-gardens-rooftops": {
+        "title": "Vertical Gardens & Rooftops",
+        "shortDesc": "Wall and facade greening, rooftop retreats with structural safety and climate-appropriate plants.",
+        "fullDesc": "Bring nature to new heights with our vertical garden and rooftop solutions. We design and install living walls, facade greening systems, and rooftop retreats that transform underutilized spaces into lush, productive green areas. Every installation considers structural safety, waterproofing integrity, and climate-appropriate plant selection to ensure long-term success in Saudi Arabia's unique environment.",
+        "features": ["Living Walls", "Facade Greening", "Rooftop Gardens", "Structural Safety", "Climate-appropriate Plants", "Waterproofing"]
+      },
+      "plantation-supplies": {
+        "title": "Plantation & Supplies",
+        "shortDesc": "Seasonal flowers, ornamentals, shrubs, trees, and turf sourced from our in-house nursery.",
+        "fullDesc": "Access premium plant stock directly from our in-house nursery. We supply seasonal flowers, ornamental plants, shrubs, trees, and high-quality turf — all carefully cultivated and acclimatized for Saudi Arabia's climate conditions. Our nursery ensures consistent quality, healthy root systems, and proper acclimatization, giving your landscape the strongest possible start.",
+        "features": ["Seasonal Flowers", "Ornamental Plants", "Shrubs & Trees", "Premium Turf", "In-house Nursery", "Climate Acclimatized"]
+      },
+      "pest-control": {
+        "title": "Pest Control Services",
+        "shortDesc": "Eco-friendly treatments for ants, cockroaches, rodents, mosquitoes, and termites — one-time and maintenance plans.",
+        "fullDesc": "Protect your property and green spaces with our comprehensive pest control services. We address infestations of ants, cockroaches, rodents, mosquitoes, and termites using eco-friendly treatments that are safe for people, pets, and plants. Choose from one-time treatments or ongoing maintenance plans tailored to your property's specific needs and Saudi Arabia's pest pressure patterns.",
+        "features": ["Eco-friendly Treatments", "Ant Control", "Rodent Management", "Mosquito Control", "Maintenance Plans", "Safe for Plants"]
+      },
+      "lawn-development-maintenance": {
+        "title": "Lawn Development & Maintenance",
+        "shortDesc": "Soil analysis, turf installation, irrigation setup, mowing, weed and pest control.",
+        "fullDesc": "Achieve the perfect lawn with our comprehensive development and maintenance services. We begin with thorough soil analysis, followed by expert turf selection or seeding suited to Saudi conditions. Our ongoing maintenance programs include precision irrigation management, regular mowing, integrated weed control, and targeted pest management to keep your lawn healthy, green, and immaculate year-round.",
+        "features": ["Soil Analysis", "Turf Installation", "Seeding", "Irrigation Setup", "Mowing Programs", "Weed & Pest Control"]
+      },
+      "irrigation-water-systems": {
+        "title": "Irrigation & Water Systems",
+        "shortDesc": "Automated drip and sprinkler systems, smart moisture sensors, and rainwater harvesting.",
+        "fullDesc": "Maximize water efficiency with our state-of-the-art irrigation and water management systems. We design and install automated drip and sprinkler networks, integrate smart moisture sensors for real-time monitoring, and implement rainwater harvesting solutions. Our systems are engineered for Saudi Arabia's arid climate, achieving significant water savings while maintaining optimal plant health across all landscape types.",
+        "features": ["Drip Irrigation", "Sprinkler Systems", "Smart Moisture Sensors", "Rainwater Harvesting", "Automated Controls", "Water Efficiency"]
+      },
+      "vegetable-fruit-gardens": {
+        "title": "Vegetables & Fruit Gardens",
+        "shortDesc": "Raised beds, organic fertilization for homes, schools, and farms.",
+        "fullDesc": "Grow your own fresh produce with our vegetable and fruit garden services. We design and build raised beds, implement organic fertilization programs, and provide ongoing guidance for homes, schools, and farms. Our approach combines traditional growing wisdom with modern techniques suited to Saudi Arabia's climate, helping you cultivate healthy, productive gardens that provide fresh food year-round.",
+        "features": ["Raised Beds", "Organic Fertilization", "Home Gardens", "School Programs", "Farm Design", "Year-round Growing"]
+      },
+      "patio-pergola-gazebo": {
+        "title": "Patio, Pergola & Gazebo",
+        "shortDesc": "Durable, weather-resistant outdoor structures designed for Saudi Arabia's climate.",
+        "fullDesc": "Extend your living space outdoors with our custom-designed patios, pergolas, and gazebos. Built with durable, weather-resistant materials specifically chosen for Saudi Arabia's intense sun and occasional harsh weather, our outdoor structures provide comfortable, shaded areas for relaxation and entertainment. Each design is customized to complement your property's architecture and landscape.",
+        "features": ["Custom Patios", "Pergola Design", "Gazebo Construction", "Weather-resistant Materials", "UV Protection", "Custom Architecture"]
+      },
+      "park-garden-landscaping": {
+        "title": "Park & Garden Landscaping",
+        "shortDesc": "Layout design, plant selection, pathways, lighting, water features, and seating.",
+        "fullDesc": "Create exceptional parks and gardens with our comprehensive landscaping services. We handle every aspect — from initial layout design and careful plant selection to pathways, ambient lighting, decorative water features, and comfortable seating areas. Our designs create cohesive outdoor environments that invite exploration, relaxation, and community gathering while celebrating Saudi Arabia's natural beauty.",
+        "features": ["Layout Design", "Plant Selection", "Pathways", "Landscape Lighting", "Water Features", "Seating Areas"]
+      },
+      "outdoor-lighting": {
+        "title": "Outdoor Lighting",
+        "shortDesc": "LED, solar-powered, motion sensors, and smart automation for landscapes and pathways.",
+        "fullDesc": "Illuminate your outdoor spaces with our professional lighting solutions. We offer energy-efficient LED installations, solar-powered fixtures, motion-sensor security lighting, and smart automation systems that bring your landscape to life after dark. Our designs enhance safety, highlight architectural and botanical features, and create inviting atmospheres for evening enjoyment.",
+        "features": ["LED Lighting", "Solar-powered", "Motion Sensors", "Smart Automation", "Security Lighting", "Architectural Highlights"]
+      },
+      "termite-control": {
+        "title": "Termite Control Services",
+        "shortDesc": "Pre and post-construction treatment, soil and structural foundation protection.",
+        "fullDesc": "Safeguard your property with our specialized termite control services. We provide both pre-construction and post-construction treatments, protecting soil and structural foundations from termite damage. Our comprehensive approach includes thorough inspections, targeted chemical barriers, and monitoring systems to ensure long-term protection against termite infestation in Saudi Arabia's climate.",
+        "features": ["Pre-construction Treatment", "Post-construction Treatment", "Soil Protection", "Foundation Protection", "Monitoring Systems", "Long-term Prevention"]
+      }
+    }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Why Green Solution",
+    "title": "Built on Expertise, Driven by Innovation",
+    "pillars": [
+      {
+        "title": "Innovative Technological Integration",
+        "description": "We leverage cutting-edge technology — from smart irrigation sensors to automated maintenance systems — to deliver superior, efficient landscape solutions."
+      },
+      {
+        "title": "Commitment to Environmental Sustainability",
+        "description": "Every project reflects our deep commitment to ecological balance, water conservation, and sustainable practices aligned with Saudi Vision 2030."
+      },
+      {
+        "title": "Strong Partnerships & Wide Distribution Network",
+        "description": "Our established relationships with suppliers, nurseries, and contractors ensure quality materials and seamless project delivery across the Kingdom."
+      },
+      {
+        "title": "Diverse & Customized Service Portfolio",
+        "description": "From intimate residential gardens to sprawling public parks, our 13 specialized service lines cover every aspect of landscape creation and maintenance."
+      },
+      {
+        "title": "Experienced Horticulturist Leadership",
+        "description": "Our founding team brings 30+ years of international horticultural expertise, combining global best practices with deep local knowledge."
+      }
+    ]
+  },
+  "featuredProjects": {
+    "eyebrow": "Featured Work",
+    "title": "Projects That Define Excellence",
+    "projects": [
+      {
+        "title": "Turf Maintenance & Irrigation Revamp",
+        "subtitle": "King Abdullah Sports City (KASC) Football Grounds",
+        "location": "Jeddah",
+        "description": "Revamped two full-size football pitches and a practice ground to international turf standards. Improved water efficiency by 30% through smart irrigation systems. Achieved zero match cancellations due to pitch conditions.",
+        "highlights": ["2 Full-size Pitches", "30% Water Savings", "Zero Match Cancellations"]
+      },
+      {
+        "title": "Hardscape and Irrigation Works",
+        "subtitle": "King Abdul Aziz University",
+        "location": "Jeddah",
+        "description": "Implemented smart irrigation with weather-based automation achieving 25% water efficiency improvement. Installed durable hardscape elements including plazas and walkways across academic, administrative, and recreational zones.",
+        "highlights": ["Smart Irrigation", "25% Water Efficiency", "Multi-zone Coverage"]
+      }
+    ],
+    "cta": "View All Projects"
+  },
+  "testimonials": {
+    "eyebrow": "Client Voices",
+    "title": "What Our Clients Say",
+    "items": [
+      {
+        "quote": "Green Solution delivered exceptional design and execution on our corporate headquarters landscape. Their professionalism and timely delivery exceeded our expectations.",
+        "author": "Abdula Ahad F",
+        "role": "Project Manager",
+        "company": "Westin Hotels & Resorts"
+      },
+      {
+        "quote": "Their scientific, well-documented integrated pest management approach resulted in healthier crops and controlled infestation across our operations.",
+        "author": "Dr. Imran Saeed",
+        "role": "Director Operations",
+        "company": "GreenHarvest Agro"
+      },
+      {
+        "quote": "Their commitment and design excellence on our KSA projects was remarkable, maintaining high standards despite the geographic distance of overseas operations.",
+        "author": "Shk. Abdul Rehman Ali Raza",
+        "role": "Principal",
+        "company": "Raza Est-KSA"
+      }
+    ]
+  },
+  "clients": {
+    "eyebrow": "Trusted By",
+    "title": "Our Valued Clients",
+    "subtitle": "Serving leading organizations across Saudi Arabia",
+    "names": [
+      "Ministry of Environment / Agriculture",
+      "Jeddah Chamber of Commerce & Industry",
+      "King Abdulaziz University",
+      "Kingdom of Saudi Arabia",
+      "King Abdullah Sports City",
+      "Juffali",
+      "RIO Trading & Contracting Co.",
+      "Al Muhaidib Contracting",
+      "Abdulrahman Alshareef Group",
+      "Fluor",
+      "Bank AlJazira",
+      "Westin Hotels & Resorts",
+      "Advanced Construction Co.",
+      "Saad Group",
+      "ABV Rock Group",
+      "Saudi Arabian Airlines",
+      "Al Qussie International Company",
+      "Rafic A. Kreidie Engineers & Contractors",
+      "China Harbour Engineering Company",
+      "B.C.M. Corp."
+    ]
+  },
+  "globalPresence": {
+    "eyebrow": "Global Reach",
+    "title": "Expanding Our Green Footprint",
+    "description": "Headquartered in Saudi Arabia, we are leveraging our extensive experience in sustainable design, water-efficient irrigation, and smart landscape solutions for arid climates to expand our services regionally.",
+    "active": "Saudi Arabia",
+    "expansion": "Pakistan, UAE"
+  },
+  "cta": {
+    "title": "Ready to Transform Your Outdoor Space?",
+    "description": "Let our team of experts bring your landscape vision to life. From concept to completion, we deliver excellence.",
+    "button": "Get Your Free Consultation",
+    "phone": "+966-595998808",
+    "email": "chhameed@greensolutionksa.com"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to start your landscape project? Reach out to us today.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Select a Service",
+      "serviceGeneral": "General Inquiry",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been sent successfully. We'll get back to you shortly.",
+      "error": "Something went wrong. Please try again or contact us directly."
+    },
+    "info": {
+      "addressTitle": "Visit Our Office",
+      "address": "Office #10, Al Kakiyah Building, Al Imam Al Shafei Street, Al Faisaliyyah Dist., Jeddah, Saudi Arabia",
+      "phoneTitle": "Call Us",
+      "phone": "+966-595998808",
+      "emailTitle": "Email Us",
+      "email": "chhameed@greensolutionksa.com",
+      "whatsappTitle": "WhatsApp",
+      "whatsapp": "+966-595998808",
+      "facebookTitle": "Facebook",
+      "facebook": "@greensolutionksa"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "What areas in Saudi Arabia do you serve?",
+        "a": "We serve all major cities across Saudi Arabia, including Jeddah, Riyadh, Makkah, Madinah, Yanbu, and Al Baha. Our headquarters is in Jeddah, and we have completed projects across the Kingdom."
+      },
+      {
+        "q": "How long does a typical landscaping project take?",
+        "a": "Project timelines vary based on scope and complexity. A residential garden typically takes 2–4 weeks, while larger commercial or public projects may take 2–6 months. We provide detailed timelines during the consultation phase."
+      },
+      {
+        "q": "What is the best irrigation system for Saudi Arabia's climate?",
+        "a": "For Saudi Arabia's arid climate, we recommend automated drip irrigation combined with smart moisture sensors. This combination can reduce water usage by 25–30% compared to traditional sprinkler systems while maintaining optimal plant health."
+      },
+      {
+        "q": "Do you handle both design and construction?",
+        "a": "Yes, we provide end-to-end services — from conceptual master plans and construction drawings through to full installation, including MEP layouts, irrigation schematics, and Bills of Quantities (BoQs)."
+      },
+      {
+        "q": "How does your work align with Saudi Vision 2030?",
+        "a": "Our services directly support Vision 2030's environmental sustainability goals through water-efficient irrigation, native plant integration, urban greening initiatives, and eco-friendly maintenance practices."
+      },
+      {
+        "q": "What kind of maintenance plans do you offer?",
+        "a": "We offer flexible maintenance plans — from weekly lawn care and seasonal planting to comprehensive monthly programs covering irrigation, pest control, pruning, fertilization, and hardscape upkeep."
+      },
+      {
+        "q": "Can you work with HOA or compound management for approvals?",
+        "a": "Absolutely. We regularly work within compound and HOA guidelines, preparing all necessary documentation and drawings for approval before commencing work."
+      },
+      {
+        "q": "What pricing should I expect for landscaping services?",
+        "a": "Pricing varies significantly based on project size, scope, and materials. We provide free consultations and detailed quotations. Contact us to discuss your specific project requirements."
+      },
+      {
+        "q": "Do you use eco-friendly pest control methods?",
+        "a": "Yes, we prioritize integrated pest management (IPM) using eco-friendly treatments that are safe for people, pets, and beneficial insects while effectively controlling pest populations."
+      },
+      {
+        "q": "Can you install smart irrigation with weather-based automation?",
+        "a": "Yes, we specialize in smart irrigation systems with weather-based controllers, soil moisture sensors, and automated scheduling. Our systems at King Abdul Aziz University achieved 25% water efficiency improvement."
+      },
+      {
+        "q": "Do you provide plants from your own nursery?",
+        "a": "Yes, we operate an in-house plant nursery, ensuring consistent quality, healthy root systems, and proper acclimatization for Saudi Arabia's climate conditions."
+      },
+      {
+        "q": "What qualifications does your team hold?",
+        "a": "Our team includes professionally qualified horticulturists, landscape architects, environmental specialists, and engineers with 25+ years of international experience."
+      },
+      {
+        "q": "Can you help with indoor plants for offices or hotels?",
+        "a": "Yes, we supply and install indoor plant arrangements for commercial spaces. We have completed indoor plant installations for major properties including the Jeddah Westin Hotel."
+      },
+      {
+        "q": "Do you offer termite treatment for new construction?",
+        "a": "Yes, we provide pre-construction and post-construction termite treatments, including soil treatment and structural foundation protection to prevent termite infestation."
+      }
+    ]
+  },
+  "footer": {
+    "companyName": "Green Solution Co.",
+    "companyNameAr": "شركة جرين سلوشن",
+    "tagline": "Landscaping, Maintenance & Irrigation Systems",
+    "categories": {
+      "designPlanning": {
+        "title": "Design & Planning",
+        "links": ["Landscape Design & Planning", "Park & Garden Landscaping"]
+      },
+      "hardscapeStructures": {
+        "title": "Hardscape & Structures",
+        "links": ["Outdoor Paving & Hardscape", "Patio, Pergola & Gazebo"]
+      },
+      "livingGreen": {
+        "title": "Living Green",
+        "links": ["Vertical Gardens & Rooftops", "Plantation & Supplies", "Lawn Development", "Vegetable & Fruit Gardens"]
+      },
+      "waterIrrigation": {
+        "title": "Water & Irrigation",
+        "links": ["Irrigation & Water Systems", "Outdoor Lighting"]
+      },
+      "protectionServices": {
+        "title": "Protection Services",
+        "links": ["Pest Control", "Termite Control", "Urban Green Space Management"]
+      }
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": ["Home", "About", "Services", "Projects", "Clients", "Contact"]
+    },
+    "copyright": "© 2024 Green Solution Co. All rights reserved.",
+    "visionText": "Aligned with Saudi Vision 2030"
+  },
+  "quotePopup": {
+    "title": "Request a Free Quote",
+    "subtitle": "Tell us about your project and we'll get back to you within 24 hours."
+  },
+  "floatingButtons": {
+    "whatsapp": "Chat on WhatsApp",
+    "call": "Call Us"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "55+ completed projects across Saudi Arabia",
+    "featuredTitle": "Featured Case Studies",
+    "allProjectsTitle": "Complete Project Portfolio",
+    "searchPlaceholder": "Search projects...",
+    "filterAll": "All Locations",
+    "columns": {
+      "project": "Project Name",
+      "client": "Client",
+      "location": "Location"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- ABV Rock Group Mark -->
+  <g transform="translate(8, 10)">
+    <polygon points="6,38 22,6 38,38" fill="#B91C1C" />
+    <polygon points="12,38 22,18 32,38" fill="#FFF" />
+    <polygon points="18,38 22,28 26,38" fill="#B91C1C" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="56" y="30" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="22" letter-spacing="2" fill="#0F172A">ABV ROCK</text>
+    <text x="56" y="46" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="9" letter-spacing="2" fill="#B91C1C">ABV ROCK GROUP KSA</text>
+  </g>
+</svg>

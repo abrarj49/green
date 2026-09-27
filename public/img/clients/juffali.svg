@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Juffali Diamond / Monogram Mark -->
+  <g transform="translate(6, 10)">
+    <rect x="4" y="4" width="36" height="36" rx="6" fill="#0E2B4C" />
+    <path d="M22 10v18c0 4-2.5 6.5-6.5 6.5-2 0-3.5-.5-4.5-1.5l1.5-3c.8.6 1.8 1 2.8 1 2 0 3-1.2 3-3V10h3.7z" fill="#FFF" />
+    <path d="M28 10h4v24h-4z" fill="#D4AF37" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="58" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="13" fill="#0E2B4C">إبـراهـيم الـجـفالـي وإخـوانـه</text>
+    <text x="58" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="15" letter-spacing="3" fill="#0E2B4C">JUFFALI</text>
+  </g>
+</svg>

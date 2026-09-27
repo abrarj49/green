@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Westin Brand Mark & Wordmark -->
+  <g transform="translate(8, 12)">
+    <!-- Iconic Leaves Emblem -->
+    <path d="M12 18c0-8 6-14 14-14 0 8-6 14-14 14z" fill="#8C7355" />
+    <path d="M12 22c0 8 6 14 14 14 0-8-6-14-14-14z" fill="#2E4D3E" />
+    <path d="M8 18c0-8-6-14-14-14 0 8 6 14 14 14z" fill="#2E4D3E" />
+    <path d="M8 22c0 8-6 14-14 14 0-8 6-14 14-14z" fill="#8C7355" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="56" y="32" font-family="'Times New Roman', Georgia, serif" font-weight="700" font-size="22" letter-spacing="4" fill="#1C1C1C">WESTIN</text>
+    <text x="58" y="47" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="8.5" letter-spacing="3" fill="#6B7280">HOTELS &amp; RESORTS</text>
+  </g>
+</svg>

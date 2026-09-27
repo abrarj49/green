@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Saudia Emblem (Crossed Swords & Palm in Shield) -->
+  <g transform="translate(4, 6)">
+    <!-- Shield / Seal -->
+    <path d="M26 2C14 2 4 8 4 18c0 16 22 30 22 30s22-14 22-30c0-10-10-16-22-16z" fill="#006C35" />
+    <path d="M26 4C15.5 4 6.5 9.2 6.5 18c0 14 19.5 26.5 19.5 26.5S45.5 32 45.5 18c0-8.8-9-14-19.5-14z" fill="#09281A" />
+    
+    <!-- Gold Crossed Swords -->
+    <path d="M16 34l20-14m0 0l-2-2m2 2l-2 2M36 34L16 20m0 0l2-2m-2 2l2 2" stroke="#C9A34E" stroke-width="2" stroke-linecap="round" />
+    <!-- Gold Palm Tree -->
+    <path d="M26 28V12" stroke="#C9A34E" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M26 12c-4-4-10-2-12 1 4 0 8 1 10 3" stroke="#C9A34E" stroke-width="1.8" fill="none" stroke-linecap="round" />
+    <path d="M26 12c4-4 10-2 12 1-4 0-8 1-10 3" stroke="#C9A34E" stroke-width="1.8" fill="none" stroke-linecap="round" />
+    <path d="M26 15c-5-3-9-1-11 2 4-1 8 0 10 2" stroke="#C9A34E" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    <path d="M26 15c5-3 9-1 11 2-4-1-8 0-10 2" stroke="#C9A34E" stroke-width="1.5" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Wordmark -->
+  <g fill="#1E293B">
+    <text x="66" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" letter-spacing="3">SAUDIA</text>
+    <text x="66" y="47" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="700" font-size="13" fill="#006C35">الخطوط السعودية</text>
+  </g>
+</svg>

@@ -1,26 +1,941 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===================================================
+   GREEN SOLUTION KSA — Sungo Design System
+   =================================================== */
+
+@theme {
+  /* Sungo Brand Colors */
+  --color-primary: #1D8F2C;
+  --color-primary-dark: #232434;
+  --color-accent: #1D8F2C;
+  --color-accent-tint: #E8F5E9;
+  --color-accent-light: #4CAF50;
+  --color-accent-dark: #15701F;
+  --color-secondary: #585858;
+  --color-neutral-900: #1E202B;
+  --color-neutral-100: #F3F7FB;
+  --color-gold-accent: #C9A34E;
+
+  /* Extended palette */
+  --color-header: #232434;
+  --color-body: #FFFFFF;
+  --color-text: #585858;
+  --color-border: #E3E3E3;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-overlay: #232434CC;
+  --color-error: #DC2626;
+  --color-success: #1D8F2C;
+  --color-warning: #F59E0B;
+
+  /* Eco-Luxury Precision Agri-Tech Tokens */
+  --color-forest: #143823;
+  --color-forest-50: #F2F6F3;
+  --color-forest-100: #E2ECE4;
+  --color-forest-200: #C2D7C8;
+  --color-forest-700: #1E4F32;
+  --color-forest-800: #143823;
+  --color-forest-900: #0C2316;
+  --color-sage: #5C7C64;
+  --color-sage-light: #7A9A82;
+  --color-sage-muted: #8CA693;
+  --color-sage-border: #D0DCD3;
+  --color-gold: #D4A373;
+  --color-gold-hover: #C29161;
+  --color-gold-light: #FAEDCD;
+  --color-surface: #F8F9F6;
+  --color-surface-elevated: #FFFFFF;
+  --color-surface-sunken: #F1F3EE;
+  --color-charcoal: #1A201C;
+  --color-charcoal-muted: #4A554E;
+  --color-charcoal-light: #6F7D74;
+  --color-divider: #E3E8E1;
+
+  /* Typography — Font Families */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display-ar: 'Cairo', sans-serif;
+  --font-body-ar: 'Cairo', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-space: 'Space Grotesk', sans-serif;
+  --font-cairo: 'Cairo', sans-serif;
+  --font-arabic: 'Cairo', sans-serif;
+
+  /* Spacing scale */
+  --spacing-section: 7rem;
+  --spacing-section-sm: 4.5rem;
+
+  /* Border radius — Sungo uses minimal radius */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 5px;
+  --radius-xl: 5px;
+  --radius-2xl: 10px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-wipe: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+  /* Shadows */
+  --shadow-card: 0px 4px 25px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0px 4px 25px rgba(56, 75, 255, 0.1);
+  --shadow-elevated: 0 20px 50px rgba(0, 0, 0, 0.12);
+
+  /* Z-index scale */
+  --z-preloader: 9999;
+  --z-nav: 1000;
+  --z-floating: 900;
+  --z-popup: 1100;
+  --z-overlay: 800;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ===================================================
+   Base Styles
+   =================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Arabic Typography — Strictly Cairo */
+  html[dir="rtl"] {
+    --font-display: 'Cairo', sans-serif;
+    --font-body: 'Cairo', sans-serif;
+    --font-display-ar: 'Cairo', sans-serif;
+    --font-body-ar: 'Cairo', sans-serif;
+  }
+
+  html[dir="rtl"] body {
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 0;
+    line-height: 1.85;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-header);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] h6 {
+    font-family: 'Cairo', sans-serif;
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  html[dir="rtl"] p {
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.85;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===================================================
+   Focus States (Accessibility)
+   =================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ===================================================
+   Selection
+   =================================================== */
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ===================================================
+   Scrollbar
+   =================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-header);
+}
+
+/* ===================================================
+   Sungo Theme Button — Split Wipe Hover
+   =================================================== */
+
+.sungo-btn {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 18px 36px;
+  border-radius: 0;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.sungo-btn::before {
+  content: "";
+  background-color: var(--color-header);
+  width: 0;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s var(--ease-wipe);
+  z-index: -1;
+}
+
+.sungo-btn::after {
+  content: "";
+  background-color: var(--color-header);
+  width: 0;
+  height: 50%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: all 0.3s var(--ease-wipe);
+  z-index: -1;
+}
+
+.sungo-btn:hover {
+  color: var(--color-white);
+}
+
+.sungo-btn:hover::before,
+.sungo-btn:hover::after {
+  width: 100%;
+}
+
+html[dir="rtl"] .sungo-btn::before {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .sungo-btn::after {
+  right: auto;
+  left: 0;
+}
+
+/* Secondary button variant */
+.sungo-btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 17px 36px;
+  border-radius: 0;
+  text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.sungo-btn-outline::before {
+  content: "";
+  background-color: var(--color-primary);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s var(--ease-wipe);
+  z-index: -1;
+}
+
+.sungo-btn-outline:hover {
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.sungo-btn-outline:hover::before {
+  width: 100%;
+}
+
+/* Text link button */
+.sungo-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.sungo-link:hover {
+  color: var(--color-header);
+  gap: 12px;
+}
+
+/* ===================================================
+   Sungo Section Title
+   =================================================== */
+
+.sungo-section-title span {
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.sungo-section-title span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+html[dir="rtl"] .sungo-section-title span {
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+html[dir="rtl"] .sungo-section-title span::before {
+  left: auto;
+  right: 0;
+}
+
+.sungo-section-title h2 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-header);
+}
+
+@media (max-width: 768px) {
+  .sungo-section-title h2 {
+    font-size: 28px;
+  }
+}
+
+/* ===================================================
+   Marquee / Text Ticker
+   =================================================== */
+
+.marquee-wrapper {
+  overflow: hidden;
+  padding: 20px 0;
+  background: var(--color-primary);
+}
+
+.marquee-wrapper.style-dark {
+  background: var(--color-header);
+}
+
+.marquee-inner {
+  display: flex;
+  width: fit-content;
+}
+
+.marquee-inner.to-left {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marqee-list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+}
+
+.marquee-item .text-slider {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-white);
+  padding: 0 15px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.marquee-item.style-outline .text-slider {
+  -webkit-text-stroke: 1px var(--color-white);
+  color: transparent;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.marquee-item .text-slider img {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+html[dir="rtl"] .marquee-inner.to-left {
+  animation: marquee-scroll-rtl 25s linear infinite;
+}
+
+@keyframes marquee-scroll-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+/* ===================================================
+   Sungo Card Styles
+   =================================================== */
+
+/* Service card — Sungo style */
+.sungo-service-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 30px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sungo-service-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-wipe);
+}
+
+.sungo-service-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-5px);
+}
+
+.sungo-service-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Project card — Sungo overlay style */
+.sungo-project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.sungo-project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.sungo-project-card:hover img {
+  transform: scale(1.1);
+}
+
+.sungo-project-card .project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+  transform: translateY(60px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.sungo-project-card:hover .project-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Testimonial card — Sungo split style */
+.sungo-testimonial {
+  display: flex;
+  gap: 0;
+}
+
+/* Achievement/Counter — Sungo dark green bar */
+.sungo-counter-bar {
+  background: linear-gradient(135deg, var(--color-header) 0%, #1a1b2e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.sungo-counter-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/img/carousel-1.jpg') center/cover no-repeat;
+  opacity: 0.15;
+}
+
+/* ===================================================
+   Sungo Animations & Micro-Interactions
+   =================================================== */
+
+@keyframes float-bob-y {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes float-bob-x {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(29, 143, 44, 0.25); }
+  50% { box-shadow: 0 0 30px rgba(29, 143, 44, 0.55); }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.float-bob-y {
+  animation: float-bob-y 4s ease-in-out infinite;
+}
+
+.float-bob-x {
+  animation: float-bob-x 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Card hover lift */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -12px rgba(29, 143, 44, 0.12), 0 8px 16px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* Bottom green accent line expand */
+.accent-line-expand {
+  position: relative;
+  overflow: hidden;
+}
+
+.accent-line-expand::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[dir="rtl"] .accent-line-expand::after {
+  transform-origin: right;
+}
+
+.accent-line-expand:hover::after {
+  transform: scaleX(1);
+}
+
+/* Diagonal Shine Overlay */
+.shine-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-hover::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%) rotate(45deg);
+  pointer-events: none;
+  z-index: 10;
+  transition: none;
+}
+
+.shine-hover:hover::before {
+  animation: shine 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===================================================
+   Custom Cursor
+   =================================================== */
+
+.cursor-outer {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transition: all 0.08s linear;
+  mix-blend-mode: difference;
+}
+
+.cursor-inner {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  transition: all 0.05s linear;
+}
+
+/* ===================================================
+   Sungo Section BG patterns
+   =================================================== */
+
+.section-bg-dark {
+  background: var(--color-header);
+  color: var(--color-white);
+}
+
+.section-bg-dark h1,
+.section-bg-dark h2,
+.section-bg-dark h3,
+.section-bg-dark h4,
+.section-bg-dark h5,
+.section-bg-dark h6 {
+  color: var(--color-white);
+}
+
+.section-bg-light {
+  background: var(--color-neutral-100);
+}
+
+/* ===================================================
+   Utility Classes
+   =================================================== */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #4CAF50 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section container */
+.section-padding {
+  padding-block: var(--spacing-section);
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-block: var(--spacing-section-sm);
+  }
+}
+
+/* ===================================================
+   Lenis smooth scroll
+   =================================================== */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ===================================================
+   Prefers reduced motion
+   =================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===================================================
+   Parallax BG legacy compat
+   =================================================== */
+
+.parallax-facts {
+  background: linear-gradient(rgba(29, 143, 44, 0.85), rgba(29, 143, 44, 0.85)), url(/img/carousel-1.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+.parallax-quote {
+  background: linear-gradient(rgba(35, 36, 52, 0.85), rgba(35, 36, 52, 0.85)), url(/img/carousel-2.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+/* Page Header Banner — Sungo breadcrumb style */
+.page-header-banner {
+  background: linear-gradient(135deg, rgba(35, 36, 52, 0.92) 0%, rgba(30, 32, 43, 0.88) 100%), url(/img/hero-royal-palace.jpg) center center no-repeat;
+  background-size: cover;
+}
+
+/* ===================================================
+   Legacy Gardener compat — keep for pages not yet updated
+   =================================================== */
+
+.gardener-service-item {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  height: 100%;
+}
+
+.gardener-service-item .service-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gardener-service-item .service-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+  transition: transform 0.4s ease-in-out;
+}
+
+.gardener-service-item:hover .service-img img {
+  transform: scale(1);
+}
+
+.gardener-service-item .service-text {
+  position: relative;
+  z-index: 10;
+  background: #FFFFFF;
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  padding: 2.5rem 1.75rem;
+}
+
+.gardener-service-item:hover .service-text {
+  background: rgba(35, 36, 52, 0.85);
+}
+
+.gardener-service-item .service-text h3,
+.gardener-service-item .service-text h4,
+.gardener-service-item .service-text p {
+  transition: color 0.3s ease-in-out;
+}
+
+.gardener-service-item:hover .service-text h3,
+.gardener-service-item:hover .service-text h4 {
+  color: #FFFFFF !important;
+}
+
+.gardener-service-item:hover .service-text p {
+  color: var(--color-accent-tint) !important;
+}
+
+/* Portfolio Inner Split Curtain Hover */
+.gardener-portfolio-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.gardener-portfolio-inner img {
+  transition: transform 0.5s ease;
+}
+
+.gardener-portfolio-inner:hover img {
+  transform: scale(1.08);
+}
+
+.gardener-portfolio-inner::before,
+.gardener-portfolio-inner::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(35, 36, 52, 0.82);
+  transition: width 0.4s ease-in-out;
+  z-index: 10;
+}
+
+.gardener-portfolio-inner::after {
+  left: auto;
+  right: 0;
+}
+
+.gardener-portfolio-inner:hover::before,
+.gardener-portfolio-inner:hover::after {
+  width: 50%;
+}
+
+.gardener-portfolio-inner .portfolio-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.gardener-portfolio-inner:hover .portfolio-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+/* Team Card Styles */
+.gardener-team-item {
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.gardener-team-item img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gardener-team-item:hover img {
+  transform: scale(1.05);
+}
+
+.gardener-team-item .team-text {
+  position: absolute;
+  width: calc(100% - 2rem);
+  left: -100%;
+  bottom: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: #FFFFFF;
+  border-radius: 0 5px 5px 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow-card);
+  z-index: 20;
+}
+
+html[dir="rtl"] .gardener-team-item .team-text {
+  left: auto;
+  right: -100%;
+  border-radius: 5px 0 0 5px;
+}
+
+.gardener-team-item:hover .team-text {
+  left: 0;
+  opacity: 1;
+}
+
+html[dir="rtl"] .gardener-team-item:hover .team-text {
+  right: 0;
+  left: auto;
 }

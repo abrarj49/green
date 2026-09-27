@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" fill="none">
+  <!-- Al Muhaidib Monogram 'M' -->
+  <g transform="translate(8, 8)">
+    <path d="M4 38V12c0-5 4-8 9-8s9 3 9 8v26" stroke="#C8102E" stroke-width="4" stroke-linecap="round" />
+    <path d="M22 38V12c0-5 4-8 9-8s9 3 9 8v26" stroke="#8A001A" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Typography -->
+  <g>
+    <text x="64" y="27" font-family="'Cairo', 'Tajawal', sans-serif" font-weight="800" font-size="15" fill="#8A001A">مـجـمـوعـة الـمـهـيـدب</text>
+    <text x="64" y="44" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="11" letter-spacing="2" fill="#C8102E">AL MUHAIDIB GROUP</text>
+  </g>
+</svg>
