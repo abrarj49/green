@@ -880,7 +880,7 @@ export default function HomePageClient() {
                 <div className="relative">
                   <div className="overflow-hidden bg-[#232434] shadow-2xl group">
                     <img
-                      src="/img/sungo/faq/faq.png"
+                      src="/img/sungo/faq/faq.jpg"
                       alt={isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}
                       className="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
                     />
