@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ServiceImage from '@/components/ServiceImage';
+import ImageUploadDropzone from '@/components/admin/ImageUploadDropzone';
 
 interface CmsServiceData {
   slug: string;
@@ -719,55 +720,12 @@ export default function EditServicePage() {
       {/* TAB 4: FEATURED IMAGE & MEDIA */}
       {activeTab === 'media' && (
         <div className="bg-white p-6 rounded-2xl border border-neutral-200 shadow-sm space-y-6">
-          <div>
-            <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-1">
-              Service Hero Image URL / Path
-            </label>
-            <input
-              type="text"
-              value={service.image}
-              onChange={(e) => setService({ ...service, image: e.target.value })}
-              placeholder="/images/hero-1.webp"
-              className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl text-xs text-neutral-800 focus:outline-none focus:border-primary"
-            />
-          </div>
-
-          {/* Preview & Presets */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-            <div>
-              <span className="block text-xs font-semibold text-neutral-600 mb-2">Live Image Preview:</span>
-              <div className="w-full h-64 rounded-xl bg-neutral-100 border border-neutral-200 overflow-hidden relative shadow-inner">
-                <ServiceImage
-                  src={service.image}
-                  alt={service.titleEn}
-                  className="w-full h-full object-cover"
-                  containerClassName="w-full h-full relative overflow-hidden bg-[#1E202B]"
-                />
-              </div>
-            </div>
-
-            <div>
-              <span className="block text-xs font-semibold text-neutral-600 mb-2">
-                Select from Engineering Asset Library:
-              </span>
-              <div className="grid grid-cols-1 gap-2">
-                {SERVICE_IMAGE_PRESETS.map((preset) => (
-                  <button
-                    key={preset.url}
-                    type="button"
-                    onClick={() => setService({ ...service, image: preset.url })}
-                    className={`flex items-center justify-between p-2.5 rounded-xl border text-left text-xs transition ${service.image === preset.url
-                        ? 'border-primary bg-primary/5 text-primary font-bold'
-                        : 'border-neutral-200 hover:bg-neutral-50 text-neutral-700'
-                      }`}
-                  >
-                    <span>{preset.label}</span>
-                    <span className="text-[11px] font-mono text-neutral-400">{preset.url}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ImageUploadDropzone
+            value={service.image}
+            onChange={(url) => setService({ ...service, image: url })}
+            label="Service Hero / Showcase Image"
+            presets={SERVICE_IMAGE_PRESETS}
+          />
         </div>
       )}
     </form>

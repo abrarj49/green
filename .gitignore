@@ -52,3 +52,6 @@ temp-sungo/
 
 # Agent metadata
 .agents/
+
+# Maintenance & test scripts
+scripts/*.mjs
