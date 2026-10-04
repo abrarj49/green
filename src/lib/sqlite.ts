@@ -101,15 +101,42 @@ export function getSqliteDb(): DatabaseSync {
   }
 
   const dataDir = path.join(process.cwd(), 'data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
+  let dbPath = path.join(dataDir, 'green.db');
+
+  // In Vercel serverless functions, the root filesystem is read-only.
+  // Use /tmp where write permissions are fully supported.
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const tmpDbPath = path.join('/tmp', 'green.db');
+    try {
+      if (!fs.existsSync(tmpDbPath) && fs.existsSync(dbPath)) {
+        fs.copyFileSync(dbPath, tmpDbPath);
+      }
+      dbPath = tmpDbPath;
+    } catch {
+      dbPath = tmpDbPath;
+    }
+  } else {
+    if (!fs.existsSync(dataDir)) {
+      try {
+        fs.mkdirSync(dataDir, { recursive: true });
+      } catch {
+        // ignore
+      }
+    }
   }
 
-  const dbPath = path.join(dataDir, 'green.db');
   const db = new DatabaseSync(dbPath);
 
-  // Enable WAL mode for high concurrent read performance
-  db.exec('PRAGMA journal_mode = WAL;');
+  // Enable WAL mode or fallback to MEMORY journal mode for serverless
+  try {
+    db.exec('PRAGMA journal_mode = WAL;');
+  } catch {
+    try {
+      db.exec('PRAGMA journal_mode = MEMORY;');
+    } catch {
+      // ignore
+    }
+  }
 
   // 1. Initialize Submissions Schema
   db.exec(`
