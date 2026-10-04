@@ -75,8 +75,6 @@ export default async function ServicesPage({
           category: s.category as any,
           divisionCode: s.divisionCode,
           image: s.image,
-          tagsEn: s.tagsEn,
-          tagsAr: s.tagsAr,
           titleEn: s.titleEn,
           titleAr: s.titleAr,
           shortDescEn: s.shortDescEn,

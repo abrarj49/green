@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getCmsServices, createCmsService, getCmsServiceBySlug } from '@/lib/sqlite';
-import { isPostgresConfigured, pgGetCmsServices, pgCreateCmsService } from '@/lib/postgres';
+import { isPostgresConfigured, pgGetCmsServices, pgCreateCmsService, pgGetCmsServiceBySlug } from '@/lib/postgres';
 
 export async function GET(req: NextRequest) {
   try {
