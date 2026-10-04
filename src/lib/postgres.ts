@@ -562,6 +562,71 @@ export async function pgGetCmsServiceBySlug(slug: string): Promise<DbCmsService 
   };
 }
 
+export async function pgCreateCmsService(data: Partial<DbCmsService>): Promise<DbCmsService> {
+  await ensurePostgresInitialized();
+  const sql = getPostgresSql();
+  const now = new Date().toISOString();
+
+  await sql`
+    INSERT INTO services_cms (
+      slug, category, division_code, image, title_en, title_ar, short_desc_en, short_desc_ar,
+      full_desc_en, full_desc_ar, features_en, features_ar, deliverables_en, deliverables_ar,
+      meta_title_en, meta_title_ar, meta_desc_en, meta_desc_ar, keywords, updated_at
+    ) VALUES (
+      ${data.slug}, ${data.category || 'General'}, ${data.divisionCode || 'DIV 32-00'},
+      ${data.image || ''}, ${data.titleEn || ''}, ${data.titleAr || ''},
+      ${data.shortDescEn || ''}, ${data.shortDescAr || ''},
+      ${data.fullDescEn || ''}, ${data.fullDescAr || ''},
+      ${JSON.stringify(data.featuresEn || [])}::jsonb, ${JSON.stringify(data.featuresAr || [])}::jsonb,
+      ${JSON.stringify(data.deliverablesEn || [])}::jsonb, ${JSON.stringify(data.deliverablesAr || [])}::jsonb,
+      ${data.metaTitleEn || ''}, ${data.metaTitleAr || ''},
+      ${data.metaDescEn || ''}, ${data.metaDescAr || ''},
+      ${data.keywords || ''}, ${now}
+    );
+  `;
+
+  return (await pgGetCmsServiceBySlug(data.slug!))!;
+}
+
+export async function pgUpdateCmsService(slug: string, data: Partial<Omit<DbCmsService, 'slug'>>): Promise<DbCmsService | null> {
+  await ensurePostgresInitialized();
+  const sql = getPostgresSql();
+  const now = new Date().toISOString();
+
+  await sql`
+    UPDATE services_cms SET
+      category = COALESCE(${data.category ?? null}, category),
+      division_code = COALESCE(${data.divisionCode ?? null}, division_code),
+      image = COALESCE(${data.image ?? null}, image),
+      title_en = COALESCE(${data.titleEn ?? null}, title_en),
+      title_ar = COALESCE(${data.titleAr ?? null}, title_ar),
+      short_desc_en = COALESCE(${data.shortDescEn ?? null}, short_desc_en),
+      short_desc_ar = COALESCE(${data.shortDescAr ?? null}, short_desc_ar),
+      full_desc_en = COALESCE(${data.fullDescEn ?? null}, full_desc_en),
+      full_desc_ar = COALESCE(${data.fullDescAr ?? null}, full_desc_ar),
+      features_en = CASE WHEN ${data.featuresEn ? true : false} THEN ${JSON.stringify(data.featuresEn || [])}::jsonb ELSE features_en END,
+      features_ar = CASE WHEN ${data.featuresAr ? true : false} THEN ${JSON.stringify(data.featuresAr || [])}::jsonb ELSE features_ar END,
+      deliverables_en = CASE WHEN ${data.deliverablesEn ? true : false} THEN ${JSON.stringify(data.deliverablesEn || [])}::jsonb ELSE deliverables_en END,
+      deliverables_ar = CASE WHEN ${data.deliverablesAr ? true : false} THEN ${JSON.stringify(data.deliverablesAr || [])}::jsonb ELSE deliverables_ar END,
+      meta_title_en = COALESCE(${data.metaTitleEn ?? null}, meta_title_en),
+      meta_title_ar = COALESCE(${data.metaTitleAr ?? null}, meta_title_ar),
+      meta_desc_en = COALESCE(${data.metaDescEn ?? null}, meta_desc_en),
+      meta_desc_ar = COALESCE(${data.metaDescAr ?? null}, meta_desc_ar),
+      keywords = COALESCE(${data.keywords ?? null}, keywords),
+      updated_at = ${now}
+    WHERE slug = ${slug};
+  `;
+
+  return await pgGetCmsServiceBySlug(slug);
+}
+
+export async function pgDeleteCmsService(slug: string): Promise<boolean> {
+  await ensurePostgresInitialized();
+  const sql = getPostgresSql();
+  await sql`DELETE FROM services_cms WHERE slug = ${slug};`;
+  return true;
+}
+
 // -------------------------------------------------------------------
 // Site SEO
 // -------------------------------------------------------------------

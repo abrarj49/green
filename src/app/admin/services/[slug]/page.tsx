@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import ServiceImage from '@/components/ServiceImage';
 
 interface CmsServiceData {
   slug: string;
@@ -28,14 +29,16 @@ interface CmsServiceData {
 }
 
 const SERVICE_IMAGE_PRESETS = [
-  { label: 'Smart Irrigation Systems', url: '/images/hero-1.webp' },
-  { label: 'Hardscape & SBC Structural', url: '/images/hero-2.webp' },
-  { label: 'Landscape Architecture & Masterplanning', url: '/images/hero-3.webp' },
-  { label: 'Commercial Irrigation & SCADA', url: '/images/water-irrigation.jpg' },
-  { label: 'Paving, Plazas & SBC Masonry', url: '/images/hardscape-sbc.jpg' },
-  { label: 'Royal Palm Health & IPM Logistics', url: '/images/palm-weevil.jpg' },
-  { label: 'Water Features & Fountains', url: '/images/service-water-features.jpg' },
-  { label: 'Pergolas & Shading Structures', url: '/images/service-pergola.jpg' },
+  { label: 'No Image / بدون صورة (Placeholder)', url: '' },
+  { label: 'Landscape Architecture & Masterplanning', url: '/img/services/landscape-design.jpg' },
+  { label: 'Smart Irrigation & Water Systems', url: '/img/services/irrigation-networks.jpg' },
+  { label: 'Turf Grass & Lawn Solutions', url: '/img/services/turf-grass.jpg' },
+  { label: 'Outdoor Paving & Hardscape', url: '/img/services/outdoor-paving.jpg' },
+  { label: 'Garden Pergolas & Architectural Shade', url: '/img/services/pergolas-shade.jpg' },
+  { label: 'Swimming Pools & Water Features', url: '/img/services/water-features.jpg' },
+  { label: 'Urban Green Space & Public Parks', url: '/img/services/urban-green.jpg' },
+  { label: 'Botanical Care & Plant Health', url: '/img/services/botanical-care.jpg' },
+  { label: 'Architectural Outdoor Lighting', url: '/img/services/architectural-outdoor-lighting.jpg' },
 ];
 
 export default function EditServicePage() {
@@ -734,14 +737,11 @@ export default function EditServicePage() {
             <div>
               <span className="block text-xs font-semibold text-neutral-600 mb-2">Live Image Preview:</span>
               <div className="w-full h-64 rounded-xl bg-neutral-100 border border-neutral-200 overflow-hidden relative shadow-inner">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <ServiceImage
                   src={service.image}
                   alt={service.titleEn}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/hero-1.webp';
-                  }}
+                  containerClassName="w-full h-full relative overflow-hidden bg-[#1E202B]"
                 />
               </div>
             </div>

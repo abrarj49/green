@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import ServiceImage from '@/components/ServiceImage';
 
 interface CmsServiceRecord {
   slug: string;
@@ -167,16 +168,13 @@ export default function AdminServicesPage() {
             >
               {/* Cover Image & Division Badge */}
               <div className="relative h-44 bg-neutral-100 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <ServiceImage
                   src={srv.image}
                   alt={srv.titleEn}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/hero-1.webp';
-                  }}
+                  containerClassName="w-full h-full relative overflow-hidden bg-[#1E202B]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
                 <div className="absolute top-3 left-3">
                   <span className="inline-block bg-white/90 backdrop-blur-md text-primary-dark font-mono font-bold text-[11px] px-2.5 py-1 rounded-md shadow-sm">
                     {srv.divisionCode}

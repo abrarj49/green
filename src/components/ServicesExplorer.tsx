@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceItem } from '@/data/services';
 import { CloseIcon } from './icons/SiteIcons';
+import ServiceImage from '@/components/ServiceImage';
 
 
 export const serviceVisualMap: Record<
@@ -287,13 +288,24 @@ export default function ServicesExplorer({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service, index) => {
               const visual = serviceVisualMap[service.slug] || {
-                image: '/img/services/landscape-design.jpg',
-                divisionCode: `DIV ${String(index + 1).padStart(2, '0')}`,
+                image: service.image || '',
+                divisionCode: service.divisionCode || `DIV ${String(index + 1).padStart(2, '0')}`,
                 tagsEn: ['Precision Engineering', 'SBC Compliant'],
                 tagsAr: ['هندسة دقيقة', 'مطابق لكود البناء'],
               };
+              const effectiveImage = service.image || visual.image;
+              const effectiveDivisionCode = service.divisionCode || visual.divisionCode;
               const catLabel = categoryLabels[service.category];
-              const tags = isAr ? visual.tagsAr : visual.tagsEn;
+              const tags =
+                service.tagsEn && service.tagsEn.length > 0
+                  ? isAr
+                    ? service.tagsAr && service.tagsAr.length > 0
+                      ? service.tagsAr
+                      : service.tagsEn
+                    : service.tagsEn
+                  : isAr
+                  ? visual.tagsAr
+                  : visual.tagsEn;
 
               return (
                 <motion.div
@@ -308,20 +320,19 @@ export default function ServicesExplorer({
                   <div>
                     {/* Architectural Photo Banner */}
                     <div className="relative h-56 w-full overflow-hidden bg-[#1E202B]">
-                      <Image
-                        src={visual.image}
+                      <ServiceImage
+                        src={effectiveImage}
                         alt={isAr ? service.titleAr : service.titleEn}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
-                        loading="lazy"
+                        isAr={isAr}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100"
+                        containerClassName="w-full h-full relative overflow-hidden bg-[#1E202B]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                       {/* Top Badges */}
-                      <div className="absolute top-4 inset-x-4 flex items-center justify-between pointer-events-none">
+                      <div className="absolute top-4 inset-x-4 flex items-center justify-between pointer-events-none z-10">
                         <span className="px-3 py-1 text-[11px] font-mono font-bold bg-[#1D8F2C] text-white">
-                          {visual.divisionCode}
+                          {effectiveDivisionCode}
                         </span>
                         <span className="px-3 py-1 text-[11px] font-bold bg-white text-[#232434] font-[var(--font-display)]">
                           {isAr ? catLabel?.ar : catLabel?.en}
@@ -329,7 +340,7 @@ export default function ServicesExplorer({
                       </div>
 
                       {/* Bottom Title on Image */}
-                      <div className="absolute bottom-4 inset-x-4">
+                      <div className="absolute bottom-4 inset-x-4 z-10">
                         <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-snug drop-shadow-md group-hover:text-[#1D8F2C] transition-colors font-[var(--font-display)]">
                           <Link href={`/${locale}/services/${service.slug}`}>
                             {isAr ? service.titleAr : service.titleEn}
@@ -420,11 +431,13 @@ export default function ServicesExplorer({
           <div className="space-y-4">
             {filteredServices.map((service, index) => {
               const visual = serviceVisualMap[service.slug] || {
-                image: '/img/services/landscape-design.jpg',
-                divisionCode: `DIV ${String(index + 1).padStart(2, '0')}`,
+                image: service.image || '',
+                divisionCode: service.divisionCode || `DIV ${String(index + 1).padStart(2, '0')}`,
                 tagsEn: ['Precision Engineering', 'SBC Compliant'],
                 tagsAr: ['هندسة دقيقة', 'مطابق لكود البناء'],
               };
+              const effectiveImage = service.image || visual.image;
+              const effectiveDivisionCode = service.divisionCode || visual.divisionCode;
               const catLabel = categoryLabels[service.category];
 
               return (
@@ -438,17 +451,19 @@ export default function ServicesExplorer({
                 >
                   <div className="flex items-start gap-4 flex-1">
                     <div className="relative w-20 h-20 rounded-none overflow-hidden shrink-0 hidden sm:block bg-neutral-900">
-                      <Image
-                        src={visual.image}
+                      <ServiceImage
+                        src={effectiveImage}
                         alt={isAr ? service.titleAr : service.titleEn}
-                        fill
-                        className="object-cover"
+                        isAr={isAr}
+                        compact={true}
+                        className="w-full h-full object-cover"
+                        containerClassName="w-full h-full relative overflow-hidden bg-neutral-900"
                       />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1.5">
                         <span className="text-xs font-mono font-bold text-white bg-[#1D8F2C] px-2 py-0.5 rounded-none">
-                          {visual.divisionCode}
+                          {effectiveDivisionCode}
                         </span>
                         <span className="text-xs font-medium text-neutral-400">
                           {isAr ? catLabel?.ar : catLabel?.en}

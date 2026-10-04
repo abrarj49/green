@@ -26,6 +26,8 @@ import {
   AwardIcon,
   BuildingIcon,
 } from '@/components/icons/SiteIcons';
+import ServiceImage from '@/components/ServiceImage';
+import type { DbCmsService } from '@/lib/sqlite';
 
 interface FeaturedService {
   slug: string;
@@ -37,7 +39,7 @@ interface FeaturedService {
   descAr: string;
 }
 
-const featuredServices: FeaturedService[] = [
+const defaultFeaturedServices: FeaturedService[] = [
   {
     slug: 'landscape-design-planning',
     image: '/img/services/landscape-design.jpg',
@@ -248,7 +250,21 @@ const sustainabilityPillars = [
   },
 ];
 
-export default function HomePageClient() {
+const categoryIconMap: Record<string, React.FC<{ className?: string }>> = {
+  'design-planning': ColumnsIcon,
+  'hardscape-structures': RulerIcon,
+  'living-green': LeafIcon,
+  'water-irrigation': DropletIcon,
+  'protection-services': PalmIcon,
+};
+
+const defaultIcons = [ColumnsIcon, SportsIcon, DropletIcon, RulerIcon, LeafIcon, PalmIcon];
+
+interface HomePageClientProps {
+  initialServices?: DbCmsService[];
+}
+
+export default function HomePageClient({ initialServices = [] }: HomePageClientProps) {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -263,6 +279,19 @@ export default function HomePageClient() {
 
   const locale = useLocale();
   const isAr = locale === 'ar';
+
+  const servicesList: FeaturedService[] =
+    initialServices && initialServices.length > 0
+      ? initialServices.slice(0, 6).map((s, idx) => ({
+          slug: s.slug,
+          image: s.image || '',
+          icon: categoryIconMap[s.category] || defaultIcons[idx % defaultIcons.length],
+          titleEn: s.titleEn,
+          titleAr: s.titleAr,
+          descEn: s.shortDescEn || (s.fullDescEn ? s.fullDescEn.substring(0, 110) + '...' : ''),
+          descAr: s.shortDescAr || (s.fullDescAr ? s.fullDescAr.substring(0, 110) + '...' : ''),
+        }))
+      : defaultFeaturedServices;
 
   const filteredProjects =
     activeCategory === 'all'
@@ -529,21 +558,23 @@ export default function HomePageClient() {
 
           {/* 6 Sungo Service Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredServices.map((service, index) => (
+            {servicesList.map((service, index) => (
               <ScrollReveal key={service.slug} direction="up" delay={index * 0.1}>
                 <div className="bg-white overflow-hidden group hover-lift accent-line-expand shine-hover shadow-xl border-t-4 border-transparent hover:border-[#1D8F2C] flex flex-col justify-between h-full">
                   <div>
                     {/* Visual Service Image with Subtle Zoom & Floating Badge */}
                     <div className="relative h-56 w-full overflow-hidden bg-[#232434]">
-                      <img
+                      <ServiceImage
                         src={service.image}
                         alt={isAr ? service.titleAr : service.titleEn}
+                        isAr={isAr}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        containerClassName="w-full h-full relative overflow-hidden bg-[#1E202B]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity pointer-events-none" />
 
                       {/* Icon Badge Floating over Image */}
-                      <div className="absolute bottom-4 start-4 w-12 h-12 bg-white group-hover:bg-[#1D8F2C] text-[#1D8F2C] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-lg group-hover:rotate-6">
+                      <div className="absolute bottom-4 start-4 w-12 h-12 bg-white group-hover:bg-[#1D8F2C] text-[#1D8F2C] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-lg group-hover:rotate-6 z-10">
                         <service.icon className="w-6 h-6 transition-transform" />
                       </div>
                     </div>

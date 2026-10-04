@@ -9,7 +9,9 @@ import AnimatedText from '@/components/AnimatedText';
 import { servicesData, getServiceBySlug } from '@/data/services';
 import { serviceVisualMap } from '@/components/ServicesExplorer';
 import { routing } from '@/i18n/routing';
-import { getCmsServiceBySlug } from '@/lib/sqlite';
+import { getCmsServiceBySlug, getCmsServices, DbCmsService } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetCmsServiceBySlug, pgGetCmsServices } from '@/lib/postgres';
+import ServiceImage from '@/components/ServiceImage';
 
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
@@ -29,7 +31,21 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const isAr = locale === 'ar';
 
-  const cmsService = getCmsServiceBySlug(slug);
+  let cmsService: DbCmsService | null = null;
+  try {
+    if (isPostgresConfigured()) {
+      cmsService = await pgGetCmsServiceBySlug(slug);
+    } else {
+      cmsService = getCmsServiceBySlug(slug);
+    }
+  } catch {
+    try {
+      cmsService = getCmsServiceBySlug(slug);
+    } catch {
+      cmsService = null;
+    }
+  }
+
   if (cmsService) {
     const title = isAr
       ? (cmsService.metaTitleAr || cmsService.titleAr)
@@ -71,7 +87,21 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const cmsService = getCmsServiceBySlug(slug);
+  let cmsService: DbCmsService | null = null;
+  try {
+    if (isPostgresConfigured()) {
+      cmsService = await pgGetCmsServiceBySlug(slug);
+    } else {
+      cmsService = getCmsServiceBySlug(slug);
+    }
+  } catch {
+    try {
+      cmsService = getCmsServiceBySlug(slug);
+    } catch {
+      cmsService = null;
+    }
+  }
+
   const baseService = getServiceBySlug(slug);
 
   if (!cmsService && !baseService) {
@@ -96,10 +126,29 @@ export default async function ServiceDetailPage({
     : baseService!;
 
   const isAr = locale === 'ar';
-  const allServices = servicesData;
+
+  let dbAllServices: DbCmsService[] = [];
+  try {
+    if (isPostgresConfigured()) {
+      dbAllServices = await pgGetCmsServices();
+    } else {
+      dbAllServices = getCmsServices();
+    }
+  } catch {
+    dbAllServices = [];
+  }
+
+  const allServices =
+    dbAllServices.length > 0
+      ? dbAllServices.map((s) => ({
+          slug: s.slug,
+          titleEn: s.titleEn,
+          titleAr: s.titleAr,
+        }))
+      : servicesData;
 
   const visual = {
-    image: cmsService?.image || serviceVisualMap[service.slug]?.image || '/img/services/landscape-design.jpg',
+    image: cmsService?.image || serviceVisualMap[service.slug]?.image || '',
     divisionCode: cmsService?.divisionCode || serviceVisualMap[service.slug]?.divisionCode || 'DIV 01',
   };
 
@@ -147,7 +196,7 @@ export default async function ServiceDetailPage({
             labelAr: 'تسليم مفتاح',
           },
         ]}
-        backgroundImage={visual.image}
+        backgroundImage={visual.image || '/img/sungo/breadcrumb.jpg'}
       />
 
       {/* 2. MAIN 2-COLUMN SERVICE DETAILS SECTION (SUNGO service-details.html layout) */}
@@ -261,16 +310,15 @@ export default async function ServiceDetailPage({
               
               {/* Featured Showcase Photo */}
               <div className="relative h-72 sm:h-[420px] w-full overflow-hidden bg-[#232434] shadow-sm border border-neutral-200">
-                <Image
+                <ServiceImage
                   src={visual.image}
                   alt={isAr ? service.titleAr : service.titleEn}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 850px"
-                  className="object-cover"
-                  priority
+                  isAr={isAr}
+                  className="w-full h-full object-cover"
+                  containerClassName="w-full h-full relative overflow-hidden bg-[#232434]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-6 start-6 end-6 flex items-center justify-between text-white text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-6 start-6 end-6 flex items-center justify-between text-white text-xs z-10">
                   <span className="font-mono bg-[#1D8F2C] px-3.5 py-1 text-white font-bold tracking-wider">
                     {visual.divisionCode}
                   </span>

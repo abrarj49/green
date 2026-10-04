@@ -5,7 +5,8 @@ import PageHero from '@/components/PageHero';
 import SectionReveal from '@/components/SectionReveal';
 import ServicesExplorer from '@/components/ServicesExplorer';
 import { servicesData, ServiceItem } from '@/data/services';
-import { getCmsServices, getSiteSeo } from '@/lib/sqlite';
+import { getCmsServices, getSiteSeo, DbCmsService } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetCmsServices } from '@/lib/postgres';
 
 export async function generateMetadata({
   params,
@@ -51,12 +52,31 @@ export default async function ServicesPage({
   setRequestLocale(locale);
   const isAr = locale === 'ar';
 
-  const dbServices = getCmsServices();
+  let dbServices: DbCmsService[] = [];
+  try {
+    if (isPostgresConfigured()) {
+      dbServices = await pgGetCmsServices();
+    } else {
+      dbServices = getCmsServices();
+    }
+  } catch (err) {
+    console.error('Error fetching dynamic services on services page:', err);
+    try {
+      dbServices = getCmsServices();
+    } catch {
+      dbServices = [];
+    }
+  }
+
   const services: ServiceItem[] =
     dbServices.length > 0
       ? dbServices.map((s) => ({
           slug: s.slug,
           category: s.category as any,
+          divisionCode: s.divisionCode,
+          image: s.image,
+          tagsEn: s.tagsEn,
+          tagsAr: s.tagsAr,
           titleEn: s.titleEn,
           titleAr: s.titleAr,
           shortDescEn: s.shortDescEn,

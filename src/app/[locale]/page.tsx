@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import HomePageClient from '@/components/HomePageClient';
-import { getSiteSeo } from '@/lib/sqlite';
+import { getSiteSeo, getCmsServices, DbCmsService } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetCmsServices } from '@/lib/postgres';
 
 export async function generateMetadata({
   params,
@@ -42,6 +43,22 @@ export async function generateMetadata({
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  let services: DbCmsService[] = [];
+  try {
+    if (isPostgresConfigured()) {
+      services = await pgGetCmsServices();
+    } else {
+      services = getCmsServices();
+    }
+  } catch (err) {
+    console.error('Error fetching dynamic services on home page:', err);
+    try {
+      services = getCmsServices();
+    } catch {
+      services = [];
+    }
+  }
   
-  return <HomePageClient />;
+  return <HomePageClient initialServices={services} />;
 }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getCmsServices, createCmsService, getCmsServiceBySlug } from '@/lib/sqlite';
-import { isPostgresConfigured, pgGetCmsServices } from '@/lib/postgres';
+import { isPostgresConfigured, pgGetCmsServices, pgCreateCmsService } from '@/lib/postgres';
 
 export async function GET(req: NextRequest) {
   try {
@@ -72,7 +72,13 @@ export async function POST(req: NextRequest) {
       .replace(/-+/g, '-');
 
     // Check if slug already exists
-    const existing = getCmsServiceBySlug(generatedSlug);
+    let existing = null;
+    if (isPostgresConfigured()) {
+      existing = await pgGetCmsServiceBySlug(generatedSlug);
+    } else {
+      existing = getCmsServiceBySlug(generatedSlug);
+    }
+
     if (existing) {
       return NextResponse.json(
         { success: false, error: `A service with slug "${generatedSlug}" already exists.` },
@@ -80,13 +86,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const newService = createCmsService({
+    let newService = null;
+    const servicePayload = {
       slug: generatedSlug,
       titleEn: titleEn.trim(),
       titleAr: (titleAr || titleEn).trim(),
       divisionCode: (divisionCode || 'DIV 32-00').trim(),
       category: category || 'Landscape Architecture',
-      image: image || '/images/hero-1.webp',
+      image: image || '',
       shortDescEn: shortDescEn || '',
       shortDescAr: shortDescAr || '',
       fullDescEn: fullDescEn || '',
@@ -101,7 +108,13 @@ export async function POST(req: NextRequest) {
       metaDescAr: metaDescAr || shortDescAr || '',
       keywords: keywords || '',
       updatedAt: new Date().toISOString(),
-    });
+    };
+
+    if (isPostgresConfigured()) {
+      newService = await pgCreateCmsService(servicePayload);
+    } else {
+      newService = createCmsService(servicePayload);
+    }
 
     return NextResponse.json({ success: true, service: newService }, { status: 201 });
   } catch (error: any) {

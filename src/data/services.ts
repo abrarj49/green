@@ -16,6 +16,10 @@ export interface ServiceItem {
   featuresAr: string[];
   deliverablesEn: string[];
   deliverablesAr: string[];
+  image?: string;
+  divisionCode?: string;
+  tagsEn?: string[];
+  tagsAr?: string[];
 }
 
 export const servicesData: ServiceItem[] = [

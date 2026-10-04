@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getCmsServiceBySlug, updateCmsService, deleteCmsService } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetCmsServiceBySlug, pgUpdateCmsService, pgDeleteCmsService } from '@/lib/postgres';
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +14,12 @@ export async function GET(
     }
 
     const { slug } = await params;
-    const service = getCmsServiceBySlug(slug);
+    let service = null;
+    if (isPostgresConfigured()) {
+      service = await pgGetCmsServiceBySlug(slug);
+    } else {
+      service = getCmsServiceBySlug(slug);
+    }
 
     if (!service) {
       return NextResponse.json(
@@ -45,7 +51,13 @@ export async function PATCH(
     const { slug } = await params;
     const body = await req.json();
 
-    const updated = updateCmsService(slug, body);
+    let updated = null;
+    if (isPostgresConfigured()) {
+      updated = await pgUpdateCmsService(slug, body);
+    } else {
+      updated = updateCmsService(slug, body);
+    }
+
     if (!updated) {
       return NextResponse.json(
         { success: false, error: 'Service not found or update failed' },
@@ -74,7 +86,12 @@ export async function DELETE(
     }
 
     const { slug } = await params;
-    const deleted = deleteCmsService(slug);
+    let deleted = false;
+    if (isPostgresConfigured()) {
+      deleted = await pgDeleteCmsService(slug);
+    } else {
+      deleted = deleteCmsService(slug);
+    }
 
     if (!deleted) {
       return NextResponse.json(
