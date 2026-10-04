@@ -4,6 +4,11 @@ import Link from 'next/link';
 import PageShell from '@/components/PageShell';
 import PageHero from '@/components/PageHero';
 import { getBlogBySlug, getBlogs } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetBlogBySlug, pgGetBlogs } from '@/lib/postgres';
+
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
 
 export async function generateStaticParams() {
   const { blogs } = getBlogs({ limit: 100 });
@@ -17,7 +22,17 @@ export async function generateMetadata({
 }) {
   const { locale, slug } = await params;
   const isAr = locale === 'ar';
-  const blog = getBlogBySlug(slug);
+
+  let blog = null;
+  try {
+    if (isPostgresConfigured()) {
+      blog = await pgGetBlogBySlug(slug);
+    } else {
+      blog = getBlogBySlug(slug);
+    }
+  } catch {
+    blog = getBlogBySlug(slug);
+  }
 
   if (!blog) {
     return {
@@ -70,7 +85,17 @@ export default async function SingleBlogPage({
   setRequestLocale(locale);
   const isAr = locale === 'ar';
 
-  const blog = getBlogBySlug(slug);
+  let blog = null;
+  try {
+    if (isPostgresConfigured()) {
+      blog = await pgGetBlogBySlug(slug);
+    } else {
+      blog = getBlogBySlug(slug);
+    }
+  } catch {
+    blog = getBlogBySlug(slug);
+  }
+
   if (!blog) {
     notFound();
   }
@@ -81,7 +106,18 @@ export default async function SingleBlogPage({
   const author = isAr ? blog.authorAr : blog.authorEn;
 
   // Get other articles for "Related Technical Briefings" and sidebar
-  const { blogs: allBlogs } = getBlogs({ isPublished: true, limit: 10 });
+  let allBlogs: any[] = [];
+  try {
+    if (isPostgresConfigured()) {
+      allBlogs = await pgGetBlogs({ publishedOnly: true });
+    } else {
+      const res = getBlogs({ isPublished: true, limit: 10 });
+      allBlogs = res.blogs;
+    }
+  } catch {
+    const res = getBlogs({ isPublished: true, limit: 10 });
+    allBlogs = res.blogs;
+  }
   const recentBlogs = allBlogs.filter((b: any) => b.id !== blog.id).slice(0, 3);
   const allCategories = Array.from(new Set(allBlogs.map((b: any) => b.category)));
 

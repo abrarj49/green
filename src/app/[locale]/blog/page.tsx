@@ -2,8 +2,12 @@ import { setRequestLocale } from 'next-intl/server';
 import PageShell from '@/components/PageShell';
 import PageHero from '@/components/PageHero';
 import { getBlogs, getSiteSeo } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetBlogs } from '@/lib/postgres';
 import BlogListClient from '@/components/blog/BlogListClient';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
@@ -51,7 +55,18 @@ export default async function BlogCatalogPage({
   setRequestLocale(locale);
   const isAr = locale === 'ar';
 
-  const { blogs } = getBlogs({ isPublished: true, limit: 100 });
+  let blogs: any[] = [];
+  try {
+    if (isPostgresConfigured()) {
+      blogs = await pgGetBlogs({ publishedOnly: true });
+    } else {
+      const res = getBlogs({ isPublished: true, limit: 100 });
+      blogs = res.blogs;
+    }
+  } catch {
+    const res = getBlogs({ isPublished: true, limit: 100 });
+    blogs = res.blogs;
+  }
 
   const jsonLd = {
     '@context': 'https://schema.org',

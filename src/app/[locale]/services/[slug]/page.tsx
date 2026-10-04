@@ -13,7 +13,11 @@ import { getCmsServiceBySlug, getCmsServices, DbCmsService } from '@/lib/sqlite'
 import { isPostgresConfigured, pgGetCmsServiceBySlug, pgGetCmsServices } from '@/lib/postgres';
 import ServiceImage from '@/components/ServiceImage';
 
-export function generateStaticParams() {
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
+
+export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
     for (const service of servicesData) {

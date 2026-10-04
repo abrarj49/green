@@ -8,6 +8,9 @@ import { servicesData, ServiceItem } from '@/data/services';
 import { getCmsServices, getSiteSeo, DbCmsService } from '@/lib/sqlite';
 import { isPostgresConfigured, pgGetCmsServices } from '@/lib/postgres';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateMetadata({
   params,
 }: {
