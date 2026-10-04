@@ -40,7 +40,7 @@ interface FeaturedService {
 const featuredServices: FeaturedService[] = [
   {
     slug: 'landscape-design-planning',
-    image: '/img/service-1.jpg',
+    image: '/img/services/landscape-design.jpg',
     icon: ColumnsIcon,
     titleEn: 'Landscape Design & Master Planning',
     titleAr: 'تصميم وتخطيط المناظر الطبيعية',
@@ -49,7 +49,7 @@ const featuredServices: FeaturedService[] = [
   },
   {
     slug: 'lawn-development-maintenance',
-    image: '/img/service-2.jpg',
+    image: '/img/services/turf-grass.jpg',
     icon: SportsIcon,
     titleEn: 'Lawn Development & Maintenance',
     titleAr: 'إنشاء وصيانة المسطحات الخضراء',
@@ -58,7 +58,7 @@ const featuredServices: FeaturedService[] = [
   },
   {
     slug: 'irrigation-water-systems',
-    image: '/img/service-3.jpg',
+    image: '/img/services/irrigation-networks.jpg',
     icon: DropletIcon,
     titleEn: 'Automated Irrigation & Water Systems',
     titleAr: 'شبكات الري الأوتوماتيكية الذكية',
@@ -67,7 +67,7 @@ const featuredServices: FeaturedService[] = [
   },
   {
     slug: 'outdoor-paving-hardscape',
-    image: '/img/service-4.jpg',
+    image: '/img/services/outdoor-paving.jpg',
     icon: RulerIcon,
     titleEn: 'Outdoor Paving, Hardscape & Walkways',
     titleAr: 'الأعمال الصلبة والممرات والبرجولات',
@@ -76,7 +76,7 @@ const featuredServices: FeaturedService[] = [
   },
   {
     slug: 'vertical-gardens-rooftops',
-    image: '/img/service-5.jpg',
+    image: '/img/services/botanical-care.jpg',
     icon: LeafIcon,
     titleEn: 'Vertical Gardens & Green Rooftops',
     titleAr: 'الحدائق الرأسية والأسطح الخضراء',
@@ -85,7 +85,7 @@ const featuredServices: FeaturedService[] = [
   },
   {
     slug: 'urban-green-space-management',
-    image: '/img/service-6.jpg',
+    image: '/img/services/urban-green.jpg',
     icon: PalmIcon,
     titleEn: 'Urban Green Space & Public Parks',
     titleAr: 'إدارة وتطوير الحدائق الحضرية',
@@ -531,33 +531,47 @@ export default function HomePageClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => (
               <ScrollReveal key={service.slug} direction="up" delay={index * 0.1}>
-                <div className="bg-white p-8 group hover-lift accent-line-expand shine-hover shadow-xl border-t-4 border-transparent hover:border-[#1D8F2C] flex flex-col justify-between h-full">
+                <div className="bg-white overflow-hidden group hover-lift accent-line-expand shine-hover shadow-xl border-t-4 border-transparent hover:border-[#1D8F2C] flex flex-col justify-between h-full">
                   <div>
-                    {/* Icon Badge */}
-                    <div className="w-16 h-16 bg-[#F3F7FB] group-hover:bg-[#1D8F2C] text-[#1D8F2C] group-hover:text-white flex items-center justify-center mb-6 transition-all duration-300 group-hover:rotate-6 group-hover:scale-110 shadow-xs">
-                      <service.icon className="w-8 h-8 transition-transform" />
+                    {/* Visual Service Image with Subtle Zoom & Floating Badge */}
+                    <div className="relative h-56 w-full overflow-hidden bg-[#232434]">
+                      <img
+                        src={service.image}
+                        alt={isAr ? service.titleAr : service.titleEn}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
+
+                      {/* Icon Badge Floating over Image */}
+                      <div className="absolute bottom-4 start-4 w-12 h-12 bg-white group-hover:bg-[#1D8F2C] text-[#1D8F2C] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-lg group-hover:rotate-6">
+                        <service.icon className="w-6 h-6 transition-transform" />
+                      </div>
                     </div>
 
-                    <h4 className="text-xl font-extrabold text-[#232434] mb-3 font-[var(--font-display)] group-hover:text-[#1D8F2C] transition-colors">
-                      <Link href={`/${locale}/services/${service.slug}`}>
-                        {isAr ? service.titleAr : service.titleEn}
-                      </Link>
-                    </h4>
+                    <div className="p-7">
+                      <h4 className="text-xl font-extrabold text-[#232434] mb-3 font-[var(--font-display)] group-hover:text-[#1D8F2C] transition-colors">
+                        <Link href={`/${locale}/services/${service.slug}`}>
+                          {isAr ? service.titleAr : service.titleEn}
+                        </Link>
+                      </h4>
 
-                    <p className="text-xs sm:text-sm text-[#585858] leading-relaxed mb-6 font-normal">
-                      {isAr ? service.descAr : service.descEn}
-                    </p>
+                      <p className="text-xs sm:text-sm text-[#585858] leading-relaxed font-normal">
+                        {isAr ? service.descAr : service.descEn}
+                      </p>
+                    </div>
                   </div>
 
-                  <Link
-                    href={`/${locale}/services/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#232434] group-hover:text-[#1D8F2C] transition-colors pt-4 border-t border-neutral-100 font-[var(--font-display)]"
-                  >
-                    <span>{isAr ? 'تفاصيل الخدمة' : 'Read More'}</span>
-                    <svg className="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </Link>
+                  <div className="px-7 pb-7">
+                    <Link
+                      href={`/${locale}/services/${service.slug}`}
+                      className="inline-flex items-center justify-between w-full text-xs font-bold uppercase tracking-wider text-[#232434] group-hover:text-[#1D8F2C] transition-colors pt-4 border-t border-neutral-100 font-[var(--font-display)]"
+                    >
+                      <span>{isAr ? 'تفاصيل الخدمة' : 'Read More'}</span>
+                      <svg className="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
