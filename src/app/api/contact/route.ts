@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createSubmission } from '@/lib/sqlite';
+import { isPostgresConfigured, pgCreateSubmission } from '@/lib/postgres';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Submission } from '@/models/Submission';
 import { checkRateLimit } from '@/lib/rate-limit';
@@ -55,21 +56,38 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, message: 'Received' });
     }
 
-    // 4. Save to SQLite Database (Local persistence)
+    // 4. Save to Vercel Postgres if configured, else fallback to SQLite
     let savedSubmissionId = null;
-    try {
-      const sqliteSub = createSubmission({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        service: data.service,
-        message: data.message,
-        locale: data.locale,
-        source: data.source,
-      });
-      savedSubmissionId = sqliteSub.id;
-    } catch (sqliteErr) {
-      console.error('SQLite submission save error:', sqliteErr);
+    if (isPostgresConfigured()) {
+      try {
+        const pgSub = await pgCreateSubmission({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          locale: data.locale,
+          source: data.source,
+        });
+        savedSubmissionId = pgSub.id;
+      } catch (pgErr) {
+        console.error('Postgres submission save error:', pgErr);
+      }
+    } else {
+      try {
+        const sqliteSub = createSubmission({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          locale: data.locale,
+          source: data.source,
+        });
+        savedSubmissionId = sqliteSub.id;
+      } catch (sqliteErr) {
+        console.error('SQLite submission save error:', sqliteErr);
+      }
     }
 
     // Optional MongoDB fallback / mirror if configured

@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getCmsServices, createCmsService, getCmsServiceBySlug } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetCmsServices } from '@/lib/postgres';
 
 export async function GET(req: NextRequest) {
   try {
     const session = getAdminSessionFromRequest(req);
     if (!session) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (isPostgresConfigured()) {
+      const services = await pgGetCmsServices();
+      return NextResponse.json({ success: true, services });
     }
 
     const services = getCmsServices();

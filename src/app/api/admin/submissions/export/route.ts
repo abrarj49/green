@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getAllSubmissionsForExport } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetAllSubmissionsForExport } from '@/lib/postgres';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Submission } from '@/models/Submission';
 
@@ -13,11 +14,22 @@ export async function GET(req: NextRequest) {
 
     let records: any[] = [];
 
-    // 1. Primary: Get from SQLite
-    try {
-      records = getAllSubmissionsForExport();
-    } catch (sqliteErr) {
-      console.error('SQLite export error:', sqliteErr);
+    // 0. Primary on Vercel: Get from Postgres
+    if (isPostgresConfigured()) {
+      try {
+        records = await pgGetAllSubmissionsForExport();
+      } catch (pgErr) {
+        console.error('Postgres export error:', pgErr);
+      }
+    }
+
+    // 1. Primary on local: Get from SQLite
+    if (records.length === 0) {
+      try {
+        records = getAllSubmissionsForExport();
+      } catch (sqliteErr) {
+        console.error('SQLite export error:', sqliteErr);
+      }
     }
 
     // 2. Fallback: If SQLite was empty, check MongoDB if connected

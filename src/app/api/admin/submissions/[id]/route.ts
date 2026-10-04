@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getSubmissionById, updateSubmission } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetSubmissionById, pgUpdateSubmission } from '@/lib/postgres';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Submission } from '@/models/Submission';
 
@@ -15,6 +16,18 @@ export async function GET(
     }
 
     const { id } = await params;
+
+    // 0. Primary on Vercel: Postgres
+    if (isPostgresConfigured()) {
+      try {
+        const pgSub = await pgGetSubmissionById(id);
+        if (pgSub) {
+          return NextResponse.json({ success: true, submission: pgSub });
+        }
+      } catch (pgErr) {
+        console.error('Postgres get error:', pgErr);
+      }
+    }
 
     // 1. Primary: Query SQLite
     try {
@@ -59,6 +72,18 @@ export async function PATCH(
     const { id } = await params;
     const body = await req.json();
     const { status, notes } = body;
+
+    // 0. Primary on Vercel: Postgres
+    if (isPostgresConfigured()) {
+      try {
+        const updated = await pgUpdateSubmission(id, { status, notes });
+        if (updated) {
+          return NextResponse.json({ success: true, submission: updated });
+        }
+      } catch (pgErr) {
+        console.error('Postgres update error:', pgErr);
+      }
+    }
 
     // 1. Primary: Update SQLite
     let updatedRecord = null;

@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getAllSiteSeo, updateSiteSeo } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetAllSiteSeo, pgUpdateSiteSeo } from '@/lib/postgres';
 
 export async function GET(req: NextRequest) {
   try {
     const session = getAdminSessionFromRequest(req);
     if (!session) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (isPostgresConfigured()) {
+      const seoRecords = await pgGetAllSiteSeo();
+      return NextResponse.json({ success: true, seoRecords });
     }
 
     const seoRecords = getAllSiteSeo();
@@ -37,7 +43,13 @@ export async function PATCH(req: NextRequest) {
       );
     }
 
-    const updated = updateSiteSeo(pageKey, data);
+    let updated = null;
+    if (isPostgresConfigured()) {
+      updated = await pgUpdateSiteSeo(pageKey, data);
+    } else {
+      updated = updateSiteSeo(pageKey, data);
+    }
+
     if (!updated) {
       return NextResponse.json(
         { success: false, error: 'SEO record not found or update failed' },

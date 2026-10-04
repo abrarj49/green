@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getBlogs, createBlog } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetBlogs, pgCreateBlog } from '@/lib/postgres';
 
 export async function GET(req: NextRequest) {
   try {
@@ -16,6 +17,20 @@ export async function GET(req: NextRequest) {
     const search = searchParams.get('search') || undefined;
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '50', 10);
+
+    if (isPostgresConfigured()) {
+      const blogs = await pgGetBlogs({ category, publishedOnly: isPublished });
+      return NextResponse.json({
+        success: true,
+        blogs,
+        pagination: {
+          total: blogs.length,
+          page,
+          limit,
+          totalPages: Math.ceil(blogs.length / limit) || 1,
+        },
+      });
+    }
 
     const result = getBlogs({
       category,
@@ -89,7 +104,7 @@ export async function POST(req: NextRequest) {
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
 
-    const newBlog = createBlog({
+    const blogData = {
       slug: generatedSlug,
       titleEn: titleEn.trim(),
       titleAr: (titleAr || titleEn).trim(),
@@ -109,7 +124,14 @@ export async function POST(req: NextRequest) {
       metaDescEn: metaDescEn || excerptEn || '',
       metaDescAr: metaDescAr || excerptAr || '',
       keywords: keywords || '',
-    });
+    };
+
+    let newBlog = null;
+    if (isPostgresConfigured()) {
+      newBlog = await pgCreateBlog(blogData);
+    } else {
+      newBlog = createBlog(blogData);
+    }
 
     return NextResponse.json({ success: true, blog: newBlog }, { status: 201 });
   } catch (error: any) {

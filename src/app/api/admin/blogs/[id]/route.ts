@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getBlogById, updateBlog, deleteBlog } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetBlogById, pgUpdateBlog, pgDeleteBlog } from '@/lib/postgres';
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +14,12 @@ export async function GET(
     }
 
     const { id } = await params;
-    const blog = getBlogById(id);
+    let blog = null;
+    if (isPostgresConfigured()) {
+      blog = await pgGetBlogById(id);
+    } else {
+      blog = getBlogById(id);
+    }
 
     if (!blog) {
       return NextResponse.json(
@@ -45,7 +51,13 @@ export async function PATCH(
     const { id } = await params;
     const body = await req.json();
 
-    const updatedBlog = updateBlog(id, body);
+    let updatedBlog = null;
+    if (isPostgresConfigured()) {
+      updatedBlog = await pgUpdateBlog(id, body);
+    } else {
+      updatedBlog = updateBlog(id, body);
+    }
+
     if (!updatedBlog) {
       return NextResponse.json(
         { success: false, error: 'Blog post not found or update failed' },
@@ -74,7 +86,12 @@ export async function DELETE(
     }
 
     const { id } = await params;
-    const deleted = deleteBlog(id);
+    let deleted = false;
+    if (isPostgresConfigured()) {
+      deleted = await pgDeleteBlog(id);
+    } else {
+      deleted = deleteBlog(id);
+    }
 
     if (!deleted) {
       return NextResponse.json(

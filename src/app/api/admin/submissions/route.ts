@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAdminSessionFromRequest } from '@/lib/auth';
 import { getSubmissions } from '@/lib/sqlite';
+import { isPostgresConfigured, pgGetSubmissions } from '@/lib/postgres';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Submission } from '@/models/Submission';
 
@@ -21,7 +22,32 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '20', 10);
 
-    // 1. Primary: Use SQLite Database
+    // 0. Primary on Vercel: Postgres Database
+    if (isPostgresConfigured()) {
+      try {
+        const result = await pgGetSubmissions({
+          status,
+          service,
+          search,
+          page,
+          limit,
+        });
+        return NextResponse.json({
+          success: true,
+          submissions: result.submissions,
+          pagination: {
+            total: result.total,
+            page: result.page,
+            limit,
+            totalPages: result.totalPages,
+          },
+        });
+      } catch (pgErr) {
+        console.error('Postgres submissions query error:', pgErr);
+      }
+    }
+
+    // 1. Local Development: SQLite Database
     try {
       const result = getSubmissions({
         status,
