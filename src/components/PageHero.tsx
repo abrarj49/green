@@ -69,7 +69,7 @@ export default function PageHero({
           {/* Breadcrumb Navigation */}
           <nav
             aria-label="Breadcrumb"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-5 font-[var(--font-display)]"
+            className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-6 font-[var(--font-display)]"
           >
             <Link
               href={`/${locale}`}
@@ -95,17 +95,6 @@ export default function PageHero({
               </span>
             ))}
           </nav>
-
-          {/* Solid Architectural Badge */}
-          {badge && (
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-none bg-white/[0.07] border-s-2 border-[#1D8F2C] text-[#22c55e] text-xs font-bold uppercase tracking-wider mb-5 font-[var(--font-display)] backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1D8F2C] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1D8F2C]"></span>
-              </span>
-              <span>{isAr ? badge.ar : badge.en}</span>
-            </div>
-          )}
 
           {/* Main Headline */}
           <AnimatedText
